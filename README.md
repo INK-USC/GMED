@@ -1,24 +1,26 @@
-# GMED-anonymous-submission
+# Gradient based Memory Editing for Task-Free continual Learning
 
-## Links for downloadable datasets:
-- MNIST dataset
+Code for paper "Gradient based Memory Editing for Task-Free continual Learning", accepted at 4th Lifelong Learning Workshop@ICML 2020. 
 
-    http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz
-    http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz
-    http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz
-    http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz
-    
-- CIFAR-10 and CIFAR-100 datsets
+Paper on [Arxiv](https://arxiv.org/abs/2006.15294)
 
-   https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz
-   https://www.cs.toronto.edu/~kriz/cifar-100-python.tar.gz
+```
+@article{Jin2020GradientBM,
+  title={Gradient Based Memory Editing for Task-Free Continual Learning},
+  author={Xisen Jin and Junyi Du and X. Ren},
+  journal={ArXiv},
+  year={2020},
+  volume={abs/2006.15294}
+}
+```
 
+## Requirements
 
-- mini-ImageNet
-
-   https://data.deepai.org/miniimagenet.zip
-
-   The partition of the datasets into tasks will be performed each time you train the model.
+```
+conda create -n gmed
+conda activate gmed
+pip install -r requirements.txt
+```
 
 ## Running experiments
 Running experiments on MNIST
@@ -36,4 +38,3 @@ export method="-" # change to "mirr" for MIR+GMED
 ```
 
 Similary, experiments on other datasets can be run by changing the name of the dataset variable above.
-  
