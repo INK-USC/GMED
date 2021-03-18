@@ -1,0 +1,102 @@
+# config file
+MNIST:
+    ACTIVATED: True
+    TASK: 'permute'
+    EPOCH: 1
+    INSTANCE_NUM: 1000
+EXTERNAL:
+    IMAGE_IDS: []
+    OBJECT_NAMES: []
+    # OBJECT_NAMES: []
+    ATTRIBUTES: []
+
+    OBJECT_TOP_K: 100
+    # 0 refers to all
+    ATTRIBUTE_TOP_K: 0
+    RELOAD_SCENE_GRAPH: False
+
+    # Change the directory of your own
+    IMG_DIR: "/home/xisen/online-concept-learning/GQA/images"
+    TRAIN_SCENE_GRAPH_PATH: "/home/xisen/online-concept-learning/GQA/sceneGraphs/train_sceneGraphs.json"
+    TRAIN_SCENE_GRAPH_DUMP_PATH: "/home/xisen/online-concept-learning/GQADump/sceneGraphs/train_sceneGraphs_dump.pkl"
+    VAL_SCENE_GRAPH_PATH: "/home/xisen/online-concept-learning/GQA/sceneGraphs/val_sceneGraphs.json"
+    VAL_SCENE_GRAPH_DUMP_PATH: "/home/xisen/online-concept-learning/GQADump/sceneGraphs/val_sceneGraphs_dump.pkl"
+
+    NUM_WORKERS: 0
+    PIN_MEMORY: True
+    SHUFFLE: False
+    # IMAGES PER GPU
+    BATCH_SIZE: 10
+    BALANCE_ATTRIBUTES: False
+    IMAGE_SIZE: 224
+    IMAGE:
+        HEIGHT: 640
+        WIDTH: 640
+    REPLAY:
+        MEM_BS: 10
+        MEM_LIMIT: 100
+        FILTER_SELF: 0
+
+    # 0 for unknown
+    ROI_BOX_HEAD:
+        NUM_ATTR: 13
+
+    OPTIMIZER:
+        ADAM: False
+
+    OCL:
+        ACTIVATED: True
+        SORT_BY_ATTRIBUTES: False
+        ALGO: "VERX"
+    VOCAB: "/home/xisen/online-concept-learning/vocab/vocab_gqa_full.pkl"
+INPUT:
+   MIN_SIZE_TRAIN: (640,)
+   MAX_SIZE_TRAIN: 640
+   MIN_SIZE_TEST: 640
+   MAX_SIZE_TEST: 640
+MODEL:
+  META_ARCHITECTURE: "GeneralizedRCNN"
+  # WEIGHT: "catalog://ImageNetPretrained/MSRA/R-50" # ResNet-50 on Imagenet
+  WEIGHT: "./pretrained-models/e2e_faster_rcnn_R_50_FPN_1x_trimmed.pth" # faster-rcnn-r50
+  BACKBONE:
+    CONV_BODY: "R-50-FPN"
+  RESNETS:
+    BACKBONE_OUT_CHANNELS: 256
+  RPN:
+    USE_FPN: True
+    ANCHOR_STRIDE: (4, 8, 16, 32, 64)
+    PRE_NMS_TOP_N_TRAIN: 1200
+    PRE_NMS_TOP_N_TEST: 1200
+    PRE_NMS_TOP_N_TEST: 200
+    POST_NMS_TOP_N_TEST: 200
+    FPN_POST_NMS_TOP_N_TRAIN: 1000
+    FPN_POST_NMS_TOP_N_TEST: 1000
+  ROI_HEADS:
+    USE_FPN: True
+    # BG_IOU_THRESHOLD: 0.3
+    # FG_IOU_THRESHOLD: 0.5
+    # OHEM: False
+  ROI_BOX_HEAD:
+    POOLER_RESOLUTION: 7
+    POOLER_SCALES: (0.25, 0.125, 0.0625, 0.03125)
+    POOLER_SAMPLING_RATIO: 2
+    # MLP_HEAD_DIM: 2048
+    FEATURE_EXTRACTOR: "FPN2MLPFeatureExtractor"
+    PREDICTOR: "FPNPredictor"
+    NUM_CLASSES: 1601
+  MASK_ON: False
+TYPE: "float32"
+DATASETS:
+  TRAIN: ("coco_gqa_train",)
+  TEST: ("coco_gqa_val",)
+DATALOADER:
+  SIZE_DIVISIBILITY: 32
+SOLVER:
+  BASE_LR: 0.05
+  MOMENTUM: 0.
+  WEIGHT_DECAY: 0.00001
+  STEPS: (12500, )
+  MAX_ITER: 30000
+  IMS_PER_BATCH: 32
+TEST:
+  IMS_PER_BATCH: 32
