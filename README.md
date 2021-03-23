@@ -7,7 +7,7 @@ Paper on [Arxiv](https://arxiv.org/abs/2006.15294)
 ```
 @article{Jin2020GradientBM,
   title={Gradient Based Memory Editing for Task-Free Continual Learning},
-  author={Xisen Jin and Junyi Du and X. Ren},
+  author={Xisen Jin and Arka Sadhu and Junyi Du and X. Ren},
   journal={ArXiv},
   year={2020},
   volume={abs/2006.15294}
