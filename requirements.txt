@@ -35,7 +35,7 @@ ipython==7.10.2
 ipython-genutils==0.2.0
 jaraco.itertools==5.0.0
 jedi==0.15.1
-Jinja2==2.11.1
+Jinja2==2.11.3
 jmespath==0.9.4
 joblib==0.14.1
 jsonlines==1.2.0
