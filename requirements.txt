@@ -57,7 +57,7 @@ nbformat==5.0.4
 networkx==2.4
 ninja==1.9.0.post1
 nltk==3.4.5
-notebook==6.0.3
+notebook==6.4.10
 numpy==1.18.0
 oauthlib==3.1.0
 olefile==0.46
