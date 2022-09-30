@@ -37,7 +37,7 @@ jaraco.itertools==5.0.0
 jedi==0.15.1
 Jinja2==2.11.1
 jmespath==0.9.4
-joblib==0.14.1
+joblib==1.2.0
 jsonlines==1.2.0
 jsonschema==3.2.0
 jupyter-client==5.3.4
